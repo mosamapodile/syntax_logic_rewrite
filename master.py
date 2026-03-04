@@ -12,11 +12,12 @@ def parity_accumulator(n):
 def linear_search_index(items, target):
     """Q2: Find index of target using enumerate."""
     # TODO: Implement logic. Return -1 if not found.
+    if items == []:
+        return None
     for index , number in enumerate(items):
         if number == target:
             return index
-        else:
-            return 
+    return -1
 
 
 def string_sanitizer(text):
@@ -66,7 +67,7 @@ def find_maximum_manual(numbers):
     """Q6: Find max value without using max()."""
     # TODO: Handle empty list case (None)
     if numbers == []:
-        return []
+        return None
     max_val = numbers[0]
     for num in numbers:
         if num > max_val:
@@ -77,12 +78,17 @@ print(find_maximum_manual([1, 9, 3, 2]))
 def vowel_frequency(phrase):
     """Q7: Count a, e, i, o, u (case-insensitive)."""
     # TODO: Use membership check
-    vowels = 'AEIOU'
+    # vowels = 'AEIOU'
     count = 0
-    for char in phrase:
-        if char.upper() or char.lower() in vowels:
+    for char in phrase.lower():
+        vowels = 'aeiou'
+        if char in vowels:
             count += 1
+        else:
+            return 0
     return count
+        
+print(vowel_frequency("Aeiou"))
 
 
 def multiplication_table(factor, limit):
@@ -111,4 +117,16 @@ print(list_integrity_check([1, 2, 3, 10]))
 def sentence_reconstructor(words):
     """Q10: Join list into string without .join()."""
     # TODO: Use loop and handle trailing space
-    pass
+    if not words:
+        return ""
+    
+    reconstructed = ""
+    i = 0
+    
+    while i < len(words):
+        reconstructed += words[i]
+        if i < len(words) - 1:
+            reconstructed += " "
+        i += 1
+        
+    return reconstructed
